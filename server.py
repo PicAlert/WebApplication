@@ -34,15 +34,12 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    # if session['logged_in'] == True:
+    #     return redirect(url_for('index'))
     if request.method == 'POST':
         session['username'] = request.form['username']
         return redirect(url_for('index'))
-    return '''
-        <form action="" method="post">
-            <p><input type=text name=username>
-            <p><input type=submit value=Login>
-        </form>
-    '''
+    return render_template('login.html')
 
 # @app.route('/login', methods=['GET', 'POST'])
 # def login():
